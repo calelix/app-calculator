@@ -1,5 +1,6 @@
 import { useEffect } from "react"
-import { Platform } from "react-native"
+import { Platform, StyleSheet, useColorScheme } from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context"
 
 import { useFonts } from "expo-font"
 import * as NavigationBar from "expo-navigation-bar"
@@ -19,20 +20,30 @@ export default function RootLayout() {
     PretendardBlack: require("../assets/fonts/pretendard/Pretendard-Black.otf"),
   })
 
+  const colorScheme = useColorScheme()
+  const themeStatusBarStyle = colorScheme === "light" ? "light" : "dark"
+  const themeNavigationBarStyle = colorScheme === "light" ? "dark" : "light"
+
   useEffect(() => {
     if (Platform.OS === "android") {
-      NavigationBar.setStyle("light")
+      NavigationBar.setStyle(themeNavigationBarStyle)
     }
-  }, [])
+  }, [themeNavigationBarStyle])
 
   if (!loaded) {
     return null
   }
   
   return (
-    <>
-      <StatusBar style="dark" />
+    <SafeAreaView style={styles.container}>
+      <StatusBar style={themeStatusBarStyle} />
       <Stack />
-    </>
+    </SafeAreaView>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+})
