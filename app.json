@@ -59,6 +59,12 @@
             "./assets/fonts/pretendard/Pretendard-Black.otf"
           ]
         }
+      ],
+      [
+        "expo-asset",
+        {
+          "assets": ["./assets/images/example.png"]
+        }
       ]
     ],
     "experiments": {
