@@ -21,7 +21,7 @@ export default function RootLayout() {
   })
 
   const colorScheme = useColorScheme()
-  const themeStatusBarStyle = colorScheme === "light" ? "light" : "dark"
+  const themeStatusBarStyle = colorScheme === "light" ? "dark" : "light"
   const themeNavigationBarStyle = colorScheme === "light" ? "dark" : "light"
 
   useEffect(() => {
